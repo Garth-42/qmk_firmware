@@ -31,6 +31,21 @@
 // This macro is identical in structure to the one in miryoku_qmk for Iris
 // rev6/rev7, which share the same 56-key physical layout as rev8.
 
+// Compatibility aliases — Miryoku's userspace (from miryoku_qmk, an older QMK
+// fork) still uses the pre-rename mouse keycodes.  Current QMK dropped the
+// KC_* mouse aliases in favour of MS_*.
+#define KC_BTN1 MS_BTN1
+#define KC_BTN2 MS_BTN2
+#define KC_BTN3 MS_BTN3
+#define KC_MS_U MS_UP
+#define KC_MS_D MS_DOWN
+#define KC_MS_L MS_LEFT
+#define KC_MS_R MS_RGHT
+#define KC_WH_U MS_WHLU
+#define KC_WH_D MS_WHLD
+#define KC_WH_L MS_WHLL
+#define KC_WH_R MS_WHLR
+
 // clang-format off
 #define XXX KC_NO
 
