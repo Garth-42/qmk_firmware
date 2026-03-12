@@ -52,6 +52,11 @@
 #define RGB_SAI RM_SATU
 #define RGB_VAI RM_VALU
 
+// IGNORE_MOD_TAP_INTERRUPT was removed in current QMK (now default behaviour).
+// Miryoku's userspace config.h still defines it, so undef it here (keymap
+// config.h is included after userspace config.h in the build system).
+#undef IGNORE_MOD_TAP_INTERRUPT
+
 // Old Miryoku declares key_overrides as `const key_override_t **` (a pointer),
 // but current QMK's ARRAY_SIZE() uses IS_ARRAY/__builtin_choose_expr and
 // hard-errors when passed a pointer.  Pre-define a plain sizeof-based
