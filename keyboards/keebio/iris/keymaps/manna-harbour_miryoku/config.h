@@ -52,6 +52,11 @@
 #define RGB_SAI RM_SATU
 #define RGB_VAI RM_VALU
 
+// Old Miryoku declares key_overrides as a pointer (const key_override_t **),
+// but current QMK expects an array for ARRAY_SIZE().  The computed size (1)
+// happens to be correct for Miryoku's single override, so suppress the warning.
+#pragma GCC diagnostic ignored "-Wsizeof-pointer-div"
+
 // clang-format off
 #define XXX KC_NO
 
