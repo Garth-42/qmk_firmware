@@ -52,10 +52,11 @@
 #define RGB_SAI RM_SATU
 #define RGB_VAI RM_VALU
 
-// Old Miryoku declares key_overrides as a pointer (const key_override_t **),
-// but current QMK expects an array for ARRAY_SIZE().  The computed size (1)
-// happens to be correct for Miryoku's single override, so suppress the warning.
-#pragma GCC diagnostic ignored "-Wsizeof-pointer-div"
+// Old Miryoku declares key_overrides as `const key_override_t **` (pointer),
+// but current QMK's ARRAY_SIZE() hard-errors on pointers via
+// __builtin_choose_expr.  Disable the feature to avoid the incompatibility;
+// the only loss is a minor Shift+CW_TOGG → KC_CAPS override.
+#undef KEY_OVERRIDE_ENABLE
 
 // clang-format off
 #define XXX KC_NO
