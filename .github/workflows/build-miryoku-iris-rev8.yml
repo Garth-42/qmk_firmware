@@ -42,13 +42,6 @@ on:
           NOMEDIA (remove media keys).
         default: ''
         required: false
-      mapping:
-        description: >
-          Key mapping for keyboards wider than 5 columns. For the Iris (6 cols
-          per side) use HHKB to mirror the outer column, or leave blank to use
-          the inner 5 columns only.
-        default: 'HHKB'
-        required: false
 
 permissions:
   contents: read
@@ -84,7 +77,6 @@ jobs:
             [ -n "${{ inputs.nav }}" ]      && echo "MIRYOKU_NAV       ?= ${{ inputs.nav }}"
             [ -n "${{ inputs.clipboard }}" ] && echo "MIRYOKU_CLIPBOARD ?= ${{ inputs.clipboard }}"
             [ -n "${{ inputs.layers }}" ]   && echo "MIRYOKU_LAYERS    ?= ${{ inputs.layers }}"
-            [ -n "${{ inputs.mapping }}" ]  && echo "MIRYOKU_MAPPING   ?= ${{ inputs.mapping }}"
           } > users/manna-harbour_miryoku/custom_rules.mk
           echo "--- custom_rules.mk ---"
           cat users/manna-harbour_miryoku/custom_rules.mk
