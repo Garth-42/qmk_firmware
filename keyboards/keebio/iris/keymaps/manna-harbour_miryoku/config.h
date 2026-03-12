@@ -52,11 +52,13 @@
 #define RGB_SAI RM_SATU
 #define RGB_VAI RM_VALU
 
-// Old Miryoku declares key_overrides as `const key_override_t **` (pointer),
-// but current QMK's ARRAY_SIZE() hard-errors on pointers via
-// __builtin_choose_expr.  Disable the feature to avoid the incompatibility;
-// the only loss is a minor Shift+CW_TOGG → KC_CAPS override.
-#undef KEY_OVERRIDE_ENABLE
+// Old Miryoku declares key_overrides as `const key_override_t **` (a pointer),
+// but current QMK's ARRAY_SIZE() uses IS_ARRAY/__builtin_choose_expr and
+// hard-errors when passed a pointer.  Pre-define a plain sizeof-based
+// ARRAY_SIZE before quantum/util.h gets to it (util.h has an #if !defined
+// guard, so our definition wins).  On 32/64-bit ARM the pointer/sizeof trick
+// yields 1, which matches Miryoku's single override entry.
+#define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
 
 // clang-format off
 #define XXX KC_NO
