@@ -32,8 +32,8 @@
 // rev6/rev7, which share the same 56-key physical layout as rev8.
 
 // Compatibility aliases — Miryoku's userspace (from miryoku_qmk, an older QMK
-// fork) still uses the pre-rename mouse keycodes.  Current QMK dropped the
-// KC_* mouse aliases in favour of MS_*.
+// fork) still uses pre-rename keycodes.  Current QMK dropped the old aliases.
+// Mouse: KC_BTN/KC_MS_/KC_WH_ → MS_*
 #define KC_BTN1 MS_BTN1
 #define KC_BTN2 MS_BTN2
 #define KC_BTN3 MS_BTN3
@@ -45,6 +45,12 @@
 #define KC_WH_D MS_WHLD
 #define KC_WH_L MS_WHLL
 #define KC_WH_R MS_WHLR
+// RGB: RGB_* → RM_*
+#define RGB_TOG RM_TOGG
+#define RGB_MOD RM_NEXT
+#define RGB_HUI RM_HUEU
+#define RGB_SAI RM_SATU
+#define RGB_VAI RM_VALU
 
 // clang-format off
 #define XXX KC_NO
