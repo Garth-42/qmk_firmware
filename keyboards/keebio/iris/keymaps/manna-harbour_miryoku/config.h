@@ -56,8 +56,10 @@
 // but current QMK's ARRAY_SIZE() uses IS_ARRAY/__builtin_choose_expr and
 // hard-errors when passed a pointer.  Pre-define a plain sizeof-based
 // ARRAY_SIZE before quantum/util.h gets to it (util.h has an #if !defined
-// guard, so our definition wins).  On 32/64-bit ARM the pointer/sizeof trick
-// yields 1, which matches Miryoku's single override entry.
+// guard, so our definition wins).  Suppress -Wsizeof-pointer-div (promoted
+// to error by QMK's build flags) since the result of 1 on 32/64-bit ARM
+// correctly matches Miryoku's single capsword override entry.
+#pragma GCC diagnostic ignored "-Wsizeof-pointer-div"
 #define ARRAY_SIZE(array) (sizeof(array) / sizeof((array)[0]))
 
 // clang-format off
