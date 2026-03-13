@@ -57,6 +57,11 @@
 // config.h is included after userspace config.h in the build system).
 #undef IGNORE_MOD_TAP_INTERRUPT
 
+// When another key is pressed while a mod-tap key is held, immediately
+// register the mod-tap key as held (modifier) rather than waiting for the
+// tapping term to expire.
+#define HOLD_ON_OTHER_KEY_PRESS
+
 // Old Miryoku declares key_overrides as `const key_override_t **` (a pointer),
 // but current QMK's ARRAY_SIZE() uses IS_ARRAY/__builtin_choose_expr and
 // hard-errors when passed a pointer.  Pre-define a plain sizeof-based
